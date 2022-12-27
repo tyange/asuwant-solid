@@ -1,4 +1,6 @@
-const Header = () => {
+import { Component } from "solid-js";
+
+const Header: Component = () => {
   return (
     <header class="p-5 font-serif">
       <nav class="flex gap-5 items-center">
