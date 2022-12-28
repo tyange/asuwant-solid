@@ -1,4 +1,4 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, For, Show } from "solid-js";
 import CategoryOption from "./CategoryOption/CategoryOption";
 
 import { categories } from "../../../constants/category";
@@ -13,6 +13,10 @@ const CategoryOptions: Component = () => {
     setCategoryList(filteredCategories);
   };
 
+  const onClickCategoryInit = () => {
+    setCategoryList(categories);
+  };
+
   return (
     <div
       class={
@@ -21,12 +25,29 @@ const CategoryOptions: Component = () => {
           : "flex justify-center items-center p-10"
       }
     >
-      {categoryList().map((category) => (
-        <CategoryOption
-          category={category}
-          onClickCategoryButtonHandler={onClickCategoryButtonHandler}
-        />
-      ))}
+      <Show
+        when={categoryList().length === 1}
+        fallback={() => (
+          <For each={categoryList()}>
+            {(category) => (
+              <CategoryOption
+                category={category}
+                onClickCategoryButtonHandler={onClickCategoryButtonHandler}
+              />
+            )}
+          </For>
+        )}
+        keyed={true}
+      >
+        <For each={categoryList()}>
+          {(category) => (
+            <CategoryOption
+              category={category}
+              onClickCategoryInit={onClickCategoryInit}
+            />
+          )}
+        </For>
+      </Show>
     </div>
   );
 };

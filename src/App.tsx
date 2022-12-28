@@ -4,9 +4,9 @@ import NewsOptions from "./components/NewsOptions/NewsOptions";
 
 const App: Component = () => {
   return (
-    <div>
+    <div class="flex flex-col h-screen">
       <Header />
-      <main>
+      <main class="flex-1 flex items-center justify-center">
         <NewsOptions />
       </main>
     </div>

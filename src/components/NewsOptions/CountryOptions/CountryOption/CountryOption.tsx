@@ -12,7 +12,7 @@ const CountryOption = ({
 }: CountryOptionProps) => {
   return (
     <button
-      class="w-40 h-16 shadow-md border self-center justify-self-center px-5 py-2 flex flex-col items-center rounded-xl"
+      class="xl:w-40 lg:w-fit xl:h-16 lg:h-fit shadow-md border self-center justify-self-center px-5 py-2 flex flex-col items-center rounded-xl"
       onClick={() => onClickCountryButtonHandler(country.code)}
     >
       <span>{getFlagEmoji(country.code)}</span>
