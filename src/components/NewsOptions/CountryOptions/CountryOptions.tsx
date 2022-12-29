@@ -1,4 +1,4 @@
-import { Component, createSignal, For } from "solid-js";
+import { Component, createSignal, For, Show } from "solid-js";
 import { countries } from "../../../constants/countries";
 import CountryOption from "./CountryOption/CountryOption";
 
@@ -12,6 +12,10 @@ const CountryOptions: Component = () => {
     setCountryList(filteredCountries);
   };
 
+  const onClickCountryInit = () => {
+    setCountryList(countries);
+  };
+
   return (
     <div
       class={
@@ -20,14 +24,29 @@ const CountryOptions: Component = () => {
           : "flex justify-center items-center p-10"
       }
     >
-      <For each={countryList()}>
-        {(country) => (
-          <CountryOption
-            country={country}
-            onClickCountryButtonHandler={onClickCountryButtonHandler}
-          />
+      <Show
+        when={countryList().length === 1}
+        keyed={true}
+        fallback={() => (
+          <For each={countryList()}>
+            {(country) => (
+              <CountryOption
+                country={country}
+                onClickCountryButtonHandler={onClickCountryButtonHandler}
+              />
+            )}
+          </For>
         )}
-      </For>
+      >
+        <For each={countryList()}>
+          {(country) => (
+            <CountryOption
+              country={country}
+              onClickCountryInit={onClickCountryInit}
+            />
+          )}
+        </For>
+      </Show>
     </div>
   );
 };
