@@ -1,5 +1,4 @@
 import { Component } from "solid-js";
-import category from "../../../store/selectedCategory";
 import selectedCategory from "../../../store/selectedCategory";
 import selectedCountry from "../../../store/selectedCountry";
 
