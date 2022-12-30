@@ -1,14 +1,19 @@
 import { Component, createSignal, For, Show } from "solid-js";
 import { countries } from "../../../constants/countries";
 import CountryOption from "./CountryOption/CountryOption";
+import selectedCountry from "../../../store/selectedCountry";
+import { Country } from "../../../types/country";
 
 const CountryOptions: Component = () => {
   const [countryList, setCountryList] = createSignal(countries);
-  const onClickCountryButtonHandler = (countryCode: string) => {
+  const { onSetCountry } = selectedCountry;
+
+  const onClickCountryButtonHandler = (country: Country) => {
     const filteredCountries = countries.filter(
-      (country) => country.code === countryCode
+      (filteredCountry) => filteredCountry.code === country.code
     );
 
+    onSetCountry(country["kor-name"]);
     setCountryList(filteredCountries);
   };
 

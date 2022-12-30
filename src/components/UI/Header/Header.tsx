@@ -1,8 +1,10 @@
 import { Component } from "solid-js";
 import category from "../../../store/selectedCategory";
 import selectedCategory from "../../../store/selectedCategory";
+import selectedCountry from "../../../store/selectedCountry";
 
 const Header: Component = () => {
+  const { country } = selectedCountry;
   const { category } = selectedCategory;
 
   return (
@@ -20,7 +22,7 @@ const Header: Component = () => {
             </ul>
           </div>
           <div>
-            <p>{category()}</p>
+            <p>notification</p>
           </div>
         </div>
       </nav>
