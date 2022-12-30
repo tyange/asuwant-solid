@@ -1,34 +1,6 @@
-## Usage
+# asuwant-solid
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
-
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
-
-```bash
-$ npm install # or pnpm install or yarn install
-```
-
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+### CRA 프로젝트에서 SolidJS 기반 프로젝트로
+* 기존 Craete React App이었던 프로젝트를 SolidJS 기반의 Single Page Application으로 마이그레이션 합니다.
+* 전역 상태 관리, 비동기 처리 방식 등 모든 것을 SolidJS가 제공하는 메서드를 활용해 처리합니다.
+* CSS로만 스타일링하던 이전 프로젝트의 스타일링 방식에 Tailwind를 적용하여 기존 방식을 탈피합니다.
