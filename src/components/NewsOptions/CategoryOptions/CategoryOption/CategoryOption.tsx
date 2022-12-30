@@ -2,7 +2,7 @@ import { Category } from "../../../../types/category";
 
 type CategoryOptionProps = {
   category: Category;
-  onClickCategoryButtonHandler?: (categoryName: string) => void;
+  onClickCategoryButtonHandler?: (category: Category) => void;
   onClickCategoryInit?: () => void;
 };
 const CategoryOption = ({
@@ -18,7 +18,7 @@ const CategoryOption = ({
       class={buttonClass}
       onClick={
         onClickCategoryButtonHandler
-          ? () => onClickCategoryButtonHandler(category.name)
+          ? () => onClickCategoryButtonHandler(category)
           : onClickCategoryInit
       }
     >

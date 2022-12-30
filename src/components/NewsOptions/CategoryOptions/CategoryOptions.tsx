@@ -2,19 +2,24 @@ import { Component, createSignal, For, Show } from "solid-js";
 import CategoryOption from "./CategoryOption/CategoryOption";
 
 import { categories } from "../../../constants/category";
+import selectedCategory from "../../../store/selectedCategory";
+import { Category } from "../../../types/category";
 
 const CategoryOptions: Component = () => {
   const [categoryList, setCategoryList] = createSignal(categories);
-  const onClickCategoryButtonHandler = (categoryName: string) => {
+  const { onSetCategory } = selectedCategory;
+  const onClickCategoryButtonHandler = (category: Category) => {
     const filteredCategories = categoryList().filter(
-      (category) => category.name === categoryName
+      (filteredCategory) => filteredCategory.name === category.name
     );
 
+    onSetCategory(category["kor-name"]);
     setCategoryList(filteredCategories);
   };
 
   const onClickCategoryInit = () => {
     setCategoryList(categories);
+    onSetCategory(undefined);
   };
 
   return (

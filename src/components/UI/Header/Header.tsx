@@ -1,6 +1,10 @@
 import { Component } from "solid-js";
+import category from "../../../store/selectedCategory";
+import selectedCategory from "../../../store/selectedCategory";
 
 const Header: Component = () => {
+  const { category } = selectedCategory;
+
   return (
     <header class="p-5 font-serif">
       <nav class="flex gap-5 items-center">
@@ -16,7 +20,7 @@ const Header: Component = () => {
             </ul>
           </div>
           <div>
-            <p>notification</p>
+            <p>{category()}</p>
           </div>
         </div>
       </nav>
