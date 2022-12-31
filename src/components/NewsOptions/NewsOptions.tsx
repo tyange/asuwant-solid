@@ -4,7 +4,7 @@ import CategoryOptions from "./CategoryOptions/CategoryOptions";
 import selectedCountry from "../../store/selectedCountry";
 import selectedCategory from "../../store/selectedCategory";
 import SubmitButtons from "./SubmitButtons/SubmitButtons";
-import axios from "axios";
+import TopHeadlineAPI from "../../api/topHeadlines/TopHeadlineAPI";
 
 const NewsOptions: Component = () => {
   const { country } = selectedCountry;
@@ -17,12 +17,11 @@ const NewsOptions: Component = () => {
   );
 
   const onClickSubmitHandler = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${
-      country()?.code
-    }&category=${category()?.name}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`;
-
     try {
-      const res = await axios.get(url);
+      const res = await TopHeadlineAPI.articles(
+        country()!.code,
+        category()!.name
+      );
 
       console.log(res);
     } catch (err) {
