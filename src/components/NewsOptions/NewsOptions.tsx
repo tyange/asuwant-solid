@@ -7,6 +7,7 @@ import SubmitButtons from "./SubmitButtons/SubmitButtons";
 import TopHeadlineAPI from "../../api/topHeadlines/TopHeadlineAPI";
 import { News } from "../../types/news";
 import ErrorComponent from "../UI/ErrorComponent/ErrorComponent";
+import LoadingComponent from "../UI/LoadingComponent/LoadingComponent";
 
 const NewsOptions: Component = () => {
   const [isError, setIsError] = createSignal(false);
@@ -57,9 +58,7 @@ const NewsOptions: Component = () => {
             )}
           </>
         ) : (
-          <For each={articles()} fallback={<div>Loading..</div>}>
-            {(article) => <div>{article.title}</div>}
-          </For>
+          <For each={articles()}>{(article) => <div>{article.title}</div>}</For>
         )}
       </Show>
     </div>
