@@ -8,7 +8,7 @@ const LoadingComponent = () => {
         src={expandingCircle}
         alt="확장하는 원"
       />
-      <div class="absolute w-2/5 md:w-32">
+      <div class="absolute w-32 sm:w-52 md:w-2/5">
         <img class="w-full" src={expandingCircleInPerson} alt="확장하는 원" />
       </div>
     </div>
