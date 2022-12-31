@@ -1,4 +1,4 @@
-export type News = {
+export type Article = {
   source: {
     id: string | null;
     name: string | null;

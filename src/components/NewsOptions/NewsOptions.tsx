@@ -1,13 +1,13 @@
-import { Component, createResource, createSignal, For, Show } from "solid-js";
+import { Component, createResource, createSignal, Show } from "solid-js";
 import CountryOptions from "./CountryOptions/CountryOptions";
 import CategoryOptions from "./CategoryOptions/CategoryOptions";
 import selectedCountry from "../../store/selectedCountry";
 import selectedCategory from "../../store/selectedCategory";
 import SubmitButtons from "./SubmitButtons/SubmitButtons";
 import TopHeadlineAPI from "../../api/topHeadlines/TopHeadlineAPI";
-import { News } from "../../types/news";
+import { Article } from "../../types/article";
 import ErrorComponent from "../UI/ErrorComponent/ErrorComponent";
-import LoadingComponent from "../UI/LoadingComponent/LoadingComponent";
+import Articles from "../Articles/Articles";
 
 const NewsOptions: Component = () => {
   const [isError, setIsError] = createSignal(false);
@@ -15,7 +15,7 @@ const NewsOptions: Component = () => {
   const { country } = selectedCountry;
   const { category } = selectedCategory;
 
-  const [articles, { refetch }] = createResource<News[]>(async () => {
+  const [articles, { refetch }] = createResource<Article[]>(async () => {
     if (!country() || !category()) return;
 
     try {
@@ -58,7 +58,7 @@ const NewsOptions: Component = () => {
             )}
           </>
         ) : (
-          <For each={articles()}>{(article) => <div>{article.title}</div>}</For>
+          <Articles articles={articles()!} />
         )}
       </Show>
     </div>
