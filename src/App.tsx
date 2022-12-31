@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import Header from "./components/UI/Header/Header";
 import NewsOptions from "./components/NewsOptions/NewsOptions";
+import { ErrorBoundary } from "solid-js";
 
 const App: Component = () => {
   return (

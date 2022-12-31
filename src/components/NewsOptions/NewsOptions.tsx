@@ -1,12 +1,15 @@
-import { Component } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 import CountryOptions from "./CountryOptions/CountryOptions";
 import CategoryOptions from "./CategoryOptions/CategoryOptions";
 import selectedCountry from "../../store/selectedCountry";
 import selectedCategory from "../../store/selectedCategory";
 import SubmitButtons from "./SubmitButtons/SubmitButtons";
 import TopHeadlineAPI from "../../api/topHeadlines/TopHeadlineAPI";
+import { News } from "../../types/news";
 
 const NewsOptions: Component = () => {
+  const [news, setNews] = createSignal<News[] | undefined>(undefined);
+
   const { country } = selectedCountry;
   const { category } = selectedCategory;
 
@@ -23,7 +26,9 @@ const NewsOptions: Component = () => {
         category()!.name
       );
 
-      console.log(res);
+      const data = await res.data;
+
+      setNews(data.articles);
     } catch (err) {
       console.log(err);
     }
@@ -31,14 +36,22 @@ const NewsOptions: Component = () => {
 
   return (
     <div>
-      <CountryOptions />
-      {divider()}
-      <CategoryOptions />
-      {country() && category() && (
+      {!news() ? (
         <>
+          <CountryOptions />
           {divider()}
-          <SubmitButtons onClickSubmitHandler={onClickSubmitHandler} />
+          <CategoryOptions />
+          {country() && category() && (
+            <>
+              {divider()}
+              <SubmitButtons onClickSubmitHandler={onClickSubmitHandler} />
+            </>
+          )}
         </>
+      ) : (
+        <div>
+          <For each={news()}>{(article) => <div>{article.title}</div>}</For>
+        </div>
       )}
     </div>
   );
