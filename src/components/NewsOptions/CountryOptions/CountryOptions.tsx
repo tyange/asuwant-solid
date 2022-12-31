@@ -13,7 +13,7 @@ const CountryOptions: Component = () => {
       (filteredCountry) => filteredCountry.code === country.code
     );
 
-    onSetCountry(country["kor-name"]);
+    onSetCountry(country);
     setCountryList(filteredCountries);
   };
 

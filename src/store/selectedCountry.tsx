@@ -1,10 +1,11 @@
 import { createRoot, createSignal } from "solid-js";
+import { Country } from "../types/country";
 
 const createCountry = () => {
-  const [country, setCountry] = createSignal<string | undefined>(undefined);
+  const [country, setCountry] = createSignal<Country | undefined>(undefined);
 
-  const onSetCountry = (countryName: string | undefined) => {
-    setCountry(countryName);
+  const onSetCountry = (country: Country | undefined) => {
+    setCountry(country);
   };
 
   return {

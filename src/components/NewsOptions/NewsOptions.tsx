@@ -4,6 +4,7 @@ import CategoryOptions from "./CategoryOptions/CategoryOptions";
 import selectedCountry from "../../store/selectedCountry";
 import selectedCategory from "../../store/selectedCategory";
 import SubmitButtons from "./SubmitButtons/SubmitButtons";
+import axios from "axios";
 
 const NewsOptions: Component = () => {
   const { country } = selectedCountry;
@@ -15,6 +16,20 @@ const NewsOptions: Component = () => {
     </div>
   );
 
+  const onClickSubmitHandler = async () => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${
+      country()?.code
+    }&category=${category()?.name}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`;
+
+    try {
+      const res = await axios.get(url);
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <CountryOptions />
@@ -23,7 +38,7 @@ const NewsOptions: Component = () => {
       {country() && category() && (
         <>
           {divider()}
-          <SubmitButtons />
+          <SubmitButtons onClickSubmitHandler={onClickSubmitHandler} />
         </>
       )}
     </div>

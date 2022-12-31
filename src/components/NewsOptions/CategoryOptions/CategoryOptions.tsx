@@ -13,7 +13,7 @@ const CategoryOptions: Component = () => {
       (filteredCategory) => filteredCategory.name === category.name
     );
 
-    onSetCategory(category["kor-name"]);
+    onSetCategory(category);
     setCategoryList(filteredCategories);
   };
 

@@ -1,9 +1,10 @@
 import { createSignal, createRoot } from "solid-js";
+import { Category } from "../types/category";
 const createCategory = () => {
-  const [category, setCategory] = createSignal<string | undefined>(undefined);
+  const [category, setCategory] = createSignal<Category | undefined>(undefined);
 
-  const onSetCategory = (categoryName: string | undefined) => {
-    setCategory(categoryName);
+  const onSetCategory = (category: Category | undefined) => {
+    setCategory(category);
   };
 
   return {
