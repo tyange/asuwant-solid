@@ -8,7 +8,7 @@ type ArticlesProps = {
 
 const Articles = ({ articles }: ArticlesProps) => {
   return (
-    <ul>
+    <ul class="flex flex-col justify-center items-center gap-8 p-10">
       <For each={articles}>
         {(article) => <ArticleItem article={article} />}
       </For>
