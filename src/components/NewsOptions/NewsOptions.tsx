@@ -1,4 +1,4 @@
-import { Component, createResource, createSignal, Show } from "solid-js";
+import { Component, createResource, Show } from "solid-js";
 import CountryOptions from "./CountryOptions/CountryOptions";
 import CategoryOptions from "./CategoryOptions/CategoryOptions";
 import selectedCountry from "../../store/selectedCountry";
