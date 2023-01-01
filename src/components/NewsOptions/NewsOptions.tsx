@@ -8,15 +8,23 @@ import TopHeadlineAPI from "../../api/topHeadlines/TopHeadlineAPI";
 import { Article } from "../../types/article";
 import ErrorComponent from "../UI/ErrorComponent/ErrorComponent";
 import Articles from "../Articles/Articles";
+import getArticlesToAPI from "../../store/getArticlesToAPI";
 
 const NewsOptions: Component = () => {
-  const [isError, setIsError] = createSignal(false);
-
   const { country } = selectedCountry;
   const { category } = selectedCategory;
+  const {
+    getArticlesError,
+    setSubmittedArticleOptions,
+    setGetArticlesLoading,
+    setGetArticlesError,
+    setSuccessArticles,
+  } = getArticlesToAPI;
 
   const [articles, { refetch }] = createResource<Article[]>(async () => {
     if (!country() || !category()) return;
+
+    setGetArticlesLoading(true);
 
     try {
       const res = await TopHeadlineAPI.articles(
@@ -25,10 +33,13 @@ const NewsOptions: Component = () => {
       );
       const data = await res.data;
 
+      setGetArticlesLoading(false);
+      setSuccessArticles(true);
       return data.articles;
     } catch (err) {
       console.log(err);
-      setIsError(true);
+      setGetArticlesLoading(false);
+      setGetArticlesError(true);
     }
   });
 
@@ -39,12 +50,17 @@ const NewsOptions: Component = () => {
   );
 
   const onClickSubmitHandler = async () => {
+    setSubmittedArticleOptions(true);
     refetch();
   };
 
   return (
     <div>
-      <Show when={!isError()} keyed={true} fallback={<ErrorComponent />}>
+      <Show
+        when={!getArticlesError()}
+        keyed={true}
+        fallback={<ErrorComponent />}
+      >
         {!articles() ? (
           <>
             <CountryOptions />
