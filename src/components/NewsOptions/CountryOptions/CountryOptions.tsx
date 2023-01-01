@@ -25,7 +25,7 @@ const CountryOptions: Component = () => {
     <div
       class={
         countryList().length > 1
-          ? "grid grid-cols-5 px-52 py-10 gap-5"
+          ? "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 sm:gap-5 px-52 md:px-32 py-10 gap-3"
           : "flex justify-center items-center p-10"
       }
     >
