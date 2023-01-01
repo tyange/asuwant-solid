@@ -10,7 +10,7 @@ const Notification = ({ countryName, categoryName }: NotificationProps) => {
   const { getArticlesLoading, successGetArticles } = getArticlesToAPI;
 
   return (
-    <div class="border shadow-sm py-3 px-2 sm:px-5 rounded-md text-xs sm:text-sm break-keep">
+    <div class="border shadow-sm py-3 px-2 sm:px-5 rounded-md text-xs sm:text-sm break-keep font-sans">
       <Switch>
         <Match when={getArticlesLoading()} keyed={true}>
           <span>
