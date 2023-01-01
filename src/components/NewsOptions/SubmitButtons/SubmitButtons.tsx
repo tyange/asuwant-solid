@@ -1,8 +1,12 @@
+import { Component } from "solid-js";
+
 type SubmitButtonsProps = {
   onClickSubmitHandler: () => void;
 };
 
-const SubmitButtons = ({ onClickSubmitHandler }: SubmitButtonsProps) => {
+const SubmitButtons: Component<SubmitButtonsProps> = ({
+  onClickSubmitHandler,
+}) => {
   return (
     <div class="w-full flex justify-center items-center p-10">
       <button

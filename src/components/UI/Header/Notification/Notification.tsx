@@ -1,12 +1,15 @@
 import getArticlesToAPI from "../../../../store/getArticlesToAPI";
-import { Match, Switch } from "solid-js";
+import { Component, Match, Switch } from "solid-js";
 
 type NotificationProps = {
   countryName: string;
   categoryName: string;
 };
 
-const Notification = ({ countryName, categoryName }: NotificationProps) => {
+const Notification: Component<NotificationProps> = ({
+  countryName,
+  categoryName,
+}) => {
   const { getArticlesLoading, successGetArticles } = getArticlesToAPI;
 
   return (
