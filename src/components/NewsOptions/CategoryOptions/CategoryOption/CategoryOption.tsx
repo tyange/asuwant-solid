@@ -11,7 +11,7 @@ const CategoryOption = ({
   onClickCategoryInit,
 }: CategoryOptionProps) => {
   const buttonClass =
-    "w-24 h-16 shadow-md border flex flex-col items-center justify-center rounded-xl";
+    "w-20 h-16 sm:24 shadow-md border flex flex-col items-center justify-center rounded-xl";
 
   return (
     <button

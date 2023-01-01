@@ -14,7 +14,7 @@ const CountryOption = ({
 }: CountryOptionProps) => {
   return (
     <button
-      class="w-32 sm:w-20 md:w-28 text-xs sm:text-sm shadow-md border self-center justify-self-center px-5 py-2 flex flex-col items-center rounded-xl break-keep"
+      class="w-20 sm:w-24 md:w-28 text-xs sm:text-sm shadow-md border self-center justify-self-center px-5 py-2 flex flex-col items-center rounded-xl break-keep"
       onClick={
         onClickCountryButtonHandler
           ? () => onClickCountryButtonHandler(country)

@@ -26,7 +26,7 @@ const CategoryOptions: Component = () => {
     <div
       class={
         categoryList().length > 1
-          ? "flex justify-center items-center gap-5 p-10"
+          ? "grid grid-cols-3 md:flex md:justify-center md:items-center gap-5 p-10"
           : "flex justify-center items-center p-10"
       }
     >
