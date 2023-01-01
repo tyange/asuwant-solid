@@ -3,6 +3,7 @@ import selectedCategory from "../../../store/selectedCategory";
 import selectedCountry from "../../../store/selectedCountry";
 import Notification from "./Notification/Notification";
 import getArticlesToAPI from "../../../store/getArticlesToAPI";
+import { A } from "@solidjs/router";
 
 const Header: Component = () => {
   const { country } = selectedCountry;
@@ -20,7 +21,9 @@ const Header: Component = () => {
         <div class="flex flex-1 gap-5 sm:gap-0 justify-between items-center">
           <div>
             <ul>
-              <li class="text-xs sm:text-sm">credits</li>
+              <li class="text-xs sm:text-sm">
+                <A href="/credits">credits</A>
+              </li>
             </ul>
           </div>
           <div>
