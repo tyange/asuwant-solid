@@ -1,5 +1,6 @@
 import Header from "../UI/Header/Header";
 import { ParentComponent } from "solid-js";
+import Footer from "../UI/Footer/Footer";
 
 const Layout: ParentComponent = (props) => {
   return (
@@ -8,6 +9,7 @@ const Layout: ParentComponent = (props) => {
       <main class="flex-1 flex items-center justify-center">
         {props.children}
       </main>
+      <Footer />
     </div>
   );
 };
