@@ -1,5 +1,5 @@
 import getArticlesToAPI from "../../../../store/getArticlesToAPI";
-import { Match, Show, Switch } from "solid-js";
+import { Match, Switch } from "solid-js";
 
 type NotificationProps = {
   countryName: string;
